@@ -9,4 +9,12 @@ terraform {
   }
 }
 
+terraform {
+  cloud {
+    organization = "Learning-Terraform-TSM"
 
+    workspaces {
+      name = "frontend-network"
+    }
+  }
+}

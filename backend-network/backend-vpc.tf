@@ -106,10 +106,10 @@ resource "aws_route_table_association" "backend_public_subnet03_association" {
 resource "aws_route_table" "backend_private_rtb01" {
   vpc_id = aws_vpc.backend_vpc.id
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.backend_ngw.id
-  }
+  # route {
+  #   cidr_block = "0.0.0.0/0"
+  #   gateway_id = aws_nat_gateway.backend_ngw.id
+  # }
 
   tags = {
     Name = "${var.backend_prefix}-private-rtb01"
@@ -161,25 +161,25 @@ resource "aws_route_table_association" "backend_private_subnet03_association" {
 # NAT Gateway and Route Table
 #############################################################
 
-resource "aws_eip" "backend_natgw_eip" {
+# resource "aws_eip" "backend_natgw_eip" {
 
-  tags = {
-    name        = "${var.backend_prefix}-natgw-eip-${var.region}"
-    environment = "${var.backend_environment}"
-  }
-}
+#   tags = {
+#     name        = "${var.backend_prefix}-natgw-eip-${var.region}"
+#     environment = "${var.backend_environment}"
+#   }
+# }
 
-resource "aws_nat_gateway" "backend_ngw" {
+# resource "aws_nat_gateway" "backend_ngw" {
 
-  allocation_id = aws_eip.backend_natgw_eip.id
-  subnet_id     = aws_subnet.backend_public_subnet01.id
+#   allocation_id = aws_eip.backend_natgw_eip.id
+#   subnet_id     = aws_subnet.backend_public_subnet01.id
 
-  depends_on = [
-    aws_eip.backend_natgw_eip
-  ]
+#   depends_on = [
+#     aws_eip.backend_natgw_eip
+#   ]
 
-  tags = {
-    name        = "${var.backend_prefix}-natgw-${var.region}"
-    environment = "${var.backend_environment}"
-  }
-}
+#   tags = {
+#     name        = "${var.backend_prefix}-natgw-${var.region}"
+#     environment = "${var.backend_environment}"
+#   }
+# }

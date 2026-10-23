@@ -38,11 +38,13 @@ resource "aws_eip_association" "be_public_instance_eip_assoc" {
 }
 
 resource "aws_instance" "backend_public_instance01" {
-  ami                    = data.aws_ami.be_public_instance_ami.id
-  instance_type          = var.be_instance_type
-  key_name               = aws_key_pair.be_keypair.key_name
-  subnet_id              = aws_subnet.backend_public_subnet01.id
-  vpc_security_group_ids = [aws_security_group.be_public_sg01.id]
+  ami           = data.aws_ami.be_public_instance_ami.id
+  instance_type = var.be_instance_type
+  key_name      = aws_key_pair.be_keypair.key_name
+  # subnet_id              = aws_subnet.backend_public_subnet01.id
+  subnet_id = data.terraform_remote_state.backend.outputs.backend_public_subnet01_id
+  # vpc_security_group_ids = [aws_security_group.be_public_sg01.id]
+  vpc_security_group_ids = [data.terraform_remote_state.backend_security.outputs.backend_public_sg01_id]
 
   tags = {
     Name        = "${var.backend_prefix}-public-instance01"

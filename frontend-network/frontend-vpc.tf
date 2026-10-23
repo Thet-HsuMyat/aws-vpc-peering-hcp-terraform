@@ -106,10 +106,10 @@ resource "aws_route_table_association" "frontend_public_subnet03_association" {
 resource "aws_route_table" "frontend_private_rtb01" {
   vpc_id = aws_vpc.frontend_vpc.id
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.frontend_ngw.id
-  }
+  # route {
+  #   cidr_block = "0.0.0.0/0"
+  #   # gateway_id = aws_nat_gateway.frontend_ngw.id
+  # }
 
   tags = {
     Name = "${var.frontend_prefix}-private-rtb01"
@@ -161,25 +161,25 @@ resource "aws_route_table_association" "frontend_private_subnet03_association" {
 # NAT Gateway and Route Table
 #############################################################
 
-resource "aws_eip" "frontend_natgw_eip" {
+# resource "aws_eip" "frontend_natgw_eip" {
 
-  tags = {
-    name        = "${var.frontend_prefix}-natgw-eip-${var.region}"
-    environment = "${var.frontend_environment}"
-  }
-}
+#   tags = {
+#     name        = "${var.frontend_prefix}-natgw-eip-${var.region}"
+#     environment = "${var.frontend_environment}"
+#   }
+# }
 
-resource "aws_nat_gateway" "frontend_ngw" {
+# resource "aws_nat_gateway" "frontend_ngw" {
 
-  allocation_id = aws_eip.frontend_natgw_eip.id
-  subnet_id     = aws_subnet.frontend_public_subnet01.id
+#   allocation_id = aws_eip.frontend_natgw_eip.id
+#   subnet_id     = aws_subnet.frontend_public_subnet01.id
 
-  depends_on = [
-    aws_eip.frontend_natgw_eip
-  ]
+#   depends_on = [
+#     aws_eip.frontend_natgw_eip
+#   ]
 
-  tags = {
-    name        = "${var.frontend_prefix}-natgw-${var.region}"
-    environment = "${var.frontend_environment}"
-  }
-}
+#   tags = {
+#     name        = "${var.frontend_prefix}-natgw-${var.region}"
+#     environment = "${var.frontend_environment}"
+#   }
+# }
