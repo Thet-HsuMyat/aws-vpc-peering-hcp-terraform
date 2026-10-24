@@ -1,4 +1,4 @@
-## VCS-Driven Terraform Workflow (edited v3)
+## VCS-Driven Terraform Workflow (hsu-hcp-terraform-lab org)
 
 This project uses GitHub for version control and HCP Terraform
 for remote plan and apply operations.
