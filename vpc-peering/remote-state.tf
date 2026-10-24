@@ -21,3 +21,27 @@ data "terraform_remote_state" "backend" {
     }
   }
 }
+
+data "terraform_remote_state" "backend_security" {
+  backend = "remote"
+
+  config = {
+    organization = "Learning-Terraform-TSM"
+
+    workspaces = {
+      name = "backend-security"
+    }
+  }
+}
+
+data "terraform_remote_state" "frontend_security" {
+  backend = "remote"
+
+  config = {
+    organization = "Learning-Terraform-TSM"
+
+    workspaces = {
+      name = "frontend-security"
+    }
+  }
+}
