@@ -11,7 +11,7 @@ terraform {
 
 terraform {
   cloud {
-    organization = "Learning-Terraform-TSM"
+    organization = "hsu-hcp-terraform-lab"
 
     workspaces {
       name = "backend-network"
