@@ -1,3 +1,11 @@
+## VCS-Driven Terraform Workflow
+
+This project uses GitHub for version control and HCP Terraform
+for remote plan and apply operations.
+
+Changes are developed on feature branches and reviewed through
+GitHub pull requests before merging into main.
+
 ### Remote-Exec Is Not Idempotent
 * Terraform provisioners do not maintain state: each apply or taint triggers all commands exactly as written.
 * Most shell commands (such as apt install, unzip, and file removals) do not check if actions are needed.
