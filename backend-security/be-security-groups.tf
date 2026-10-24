@@ -6,8 +6,7 @@ resource "aws_security_group" "be_public_sg01" {
   name = "${var.backend_prefix}-public-security-group01"
 
   # vpc_id = aws_vpc.backend_vpc.id
-  # vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
-  vpc_id = "vpc-04b81ae88cc78c638"
+  vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
 
   ingress {
     from_port   = 22
@@ -63,8 +62,7 @@ resource "aws_security_group" "be_private_sg01" {
   name = "${var.backend_prefix}-private-security-group01"
 
   # vpc_id = aws_vpc.backend_vpc.id
-  # vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
-    vpc_id = "vpc-04b81ae88cc78c638"
+  vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
 
   tags = {
     Name = "${var.backend_prefix}-private-security-group01"
@@ -97,8 +95,7 @@ resource "aws_security_group" "be_private_sg02" {
   name = "${var.backend_prefix}-private-security-group02"
 
   # vpc_id = aws_vpc.backend_vpc.id
-  # vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
-  vpc_id = "vpc-04b81ae88cc78c638"
+  vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
 
   tags = {
     Name = "${var.backend_prefix}-private-security-group02"
@@ -161,8 +158,8 @@ resource "aws_security_group" "be_private_sg03" {
   name = "${var.backend_prefix}-private-security-group03"
 
   # vpc_id = aws_vpc.backend_vpc.id
-  # vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
-    vpc_id = "vpc-04b81ae88cc78c638"
+  vpc_id = data.terraform_remote_state.backend.outputs.backend_vpc_id
+
   tags = {
     Name = "${var.backend_prefix}-private-security-group03"
   }
